@@ -39,7 +39,7 @@ class TestQuotaProfileView(OsfTestCase):
         )
         expected = self.quota_text.format(0.0, 0, 'B', api_settings.DEFAULT_MAX_QUOTA)
         assert_in(expected, response.body.decode())
-        assert_in('Usage of NII storage', response.body)
+        assert_in('Usage of NII storage', response.body.decode())
 
     def test_custom_quota(self):
         UserQuota.objects.create(
@@ -53,7 +53,7 @@ class TestQuotaProfileView(OsfTestCase):
             auth=self.user.auth
         )
         assert_in(self.quota_text.format(0.0, 0, 'B', 200), response.body.decode())
-        assert_in('Usage of NII storage', response.body)
+        assert_in('Usage of NII storage', response.body.decode())
 
     @mock.patch('website.util.quota.used_quota')
     def test_institution_default_quota(self, mock_usedquota):
@@ -69,7 +69,7 @@ class TestQuotaProfileView(OsfTestCase):
         )
         expected = self.quota_text.format(0.0, 0, 'B', api_settings.DEFAULT_MAX_QUOTA)
         assert_in(expected, response.body.decode())
-        assert_in('Usage of Institutional storage', response.body)
+        assert_in('Usage of Institutional storage', response.body.decode())
 
     def test_institution_custom_quota(self):
         institution = InstitutionFactory()
@@ -87,7 +87,7 @@ class TestQuotaProfileView(OsfTestCase):
             auth=self.user.auth
         )
         assert_in(self.quota_text.format(50.0, 100.0, 'GB', 200), response.body.decode())
-        assert_in('Usage of Institutional storage', response.body)
+        assert_in('Usage of Institutional storage', response.body.decode())
 
     def test_used_quota_bytes(self):
         UserQuota.objects.create(user=self.user, max_quota=100, used=560)
