@@ -48,7 +48,7 @@ def create_rdmfiletimestamptokenverifyresult(self, filename='test_file_timestamp
     ## create tmp_file (file_node)
     tmp_file = os.path.join(tmp_dir, filename)
     with open(tmp_file, 'wb') as fout:
-        fout.write('filename:{}, provider:{}, inspection_result_status_1(true:1 or false:3):{}'.format(filename, provider, inspection_result_status_1))
+        fout.write('filename:{}, provider:{}, inspection_result_status_1(true:1 or false:3):{}'.format(filename.encode('utf-8'), provider.encode('utf-8'), inspection_result_status_1))
     if inspection_result_status_1:
         ## add timestamp
         addTimestamp = AddTimestamp()
