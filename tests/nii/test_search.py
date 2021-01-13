@@ -97,8 +97,6 @@ def s2u(obj):
     return obj
 
 def u2s(obj):
-    if isinstance(obj, str):
-        return obj.encode('utf-8')
     if isinstance(obj, list):
         return [u2s(s) for s in obj]
     if isinstance(obj, dict):
