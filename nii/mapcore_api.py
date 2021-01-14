@@ -311,7 +311,7 @@ class MAPCore(object):
     #
     def get_group_by_name(self, group_name):
         method_name = sys._getframe().f_code.co_name
-        parameters = {'searchWord': group_name.encode('utf-8')}
+        parameters = {'searchWord': group_name}
         path = '/mygroup'
         j = self.req_api(method_name, (group_name,),
                          requests.get, path, parameters)
