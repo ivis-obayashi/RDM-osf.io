@@ -507,7 +507,6 @@ def _mapcore_api_with_switching_token(access_user, node, group_key, func, **kwar
 
     # maintain the order and remove duplicated users
     first_e = None
-    first_tb = None  # for sys.exc_info()
     for candidate in sorted(set(candidates), key=candidates.index):
         if candidate.is_disabled:
             continue
@@ -523,11 +522,9 @@ def _mapcore_api_with_switching_token(access_user, node, group_key, func, **kwar
                 raise
             if first_e is None:
                 first_e = e
-                first_tb = sys.exc_info()
         except Exception as e:
             if first_e is None:
                 first_e = e
-                first_tb = sys.exc_info()
     if first_e is None:
         raise Exception('No user have mAP access token')
     raise first_e
