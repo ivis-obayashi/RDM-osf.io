@@ -486,8 +486,7 @@ class MAPCore(object):
             return False
 
         #logger.debug('result.encoding={}'.format(result.encoding))
-        j = result.json()
-        j = encode_recursive(j)
+        j = json.loads(result.content)
         if j['status']['error_code'] != 0:
             self.api_error_code = j['status']['error_code']
             self.error_message = j['status']['error_msg']
