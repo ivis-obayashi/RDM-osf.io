@@ -166,8 +166,10 @@ def create_index(index=None):
 @requires_search
 def search_contributor(query, page=0, size=10, exclude=None, current_user=None):
     exclude = exclude or []
+    print('THIS001')
     result = search_engine.search_contributor(query=query, page=page, size=size,
                                               exclude=exclude, current_user=current_user)
+    print('THIS002')
     return result
 
 

@@ -188,10 +188,12 @@ class TestSearchMigrationNormalizedField(OsfTestCase):
     # migrate() may not update elasticsearch-data immediately.
     @retry_assertion(retries=10)
     def search_contrib(self, expect_num):
+        print('THIS01')
         contribs = search.search_contributor(
             self.testname_normalized,
             current_user=self.user1
         )
+        print('THIS02')
         assert_equal(len(contribs['users']), expect_num)
 
     # migrate() may not update elasticsearch-data immediately.
