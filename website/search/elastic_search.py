@@ -1762,7 +1762,7 @@ def search_contributor(query, page=0, size=10, exclude=None, current_user=None):
         normalized_item = unicode_normalize(item)
         normalized_items.append(normalized_item)
     items = normalized_items
-    logger.info('normalized_items: {}'.format(items))
+    logger.error('normalized_items: {}'.format(items))
 
     def item_format_quote(item):
         item, quoted = quote(es_escape(item))
