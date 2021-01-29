@@ -126,21 +126,18 @@ class NodeSettings(BaseOAuthNodeSettings, BaseStorageAddon):
 
         client = GoogleDriveInstitutionsClient(access_token)
         if folder_id == 'root':
-            # about = client.about()
             rootFolderId = client.rootFolderId()
 
             return [{
                 'addon': self.config.short_name,
                 'path': '/',
                 'kind': 'folder',
-                # 'id': about['rootFolderId'],
                 'id': rootFolderId,
                 'name': '/ (Full Google Drive in G Suite / Google Workspace)',
                 'urls': {
                     'folders': api_v2_url('nodes/{}/addons/googledriveinstitutions/folders/'.format(self.owner._id),
                         params={
                             'path': '/',
-                            # 'id': about['rootFolderId']
                             'id': rootFolderId
                     })
                 }

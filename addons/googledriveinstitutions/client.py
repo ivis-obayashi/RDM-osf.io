@@ -28,15 +28,6 @@ class GoogleDriveInstitutionsClient(BaseClient):
             return {'authorization': 'Bearer {}'.format(self.access_token)}
         return {}
 
-    # API v2 #
-    # def about(self):
-    #     return self._make_request(
-    #         'GET',
-    #         self._build_url(settings.API_BASE_URL, 'drive', 'v2', 'about', ),
-    #         expects=(200, ),
-    #         throws=HTTPError(401)
-    #     ).json()
-
     def rootFolderId(self):
         return self._make_request(
             'GET',
@@ -53,11 +44,9 @@ class GoogleDriveInstitutionsClient(BaseClient):
         ])
         res = self._make_request(
             'GET',
-            # self._build_url(settings.API_BASE_URL, 'drive', 'v2', 'files', ),
-            self._build_url(settings.API_BASE_URL, 'drive', 'v3', 'files', ), # 'fields=files'で指定する必要あり？
+            self._build_url(settings.API_BASE_URL, 'drive', 'v3', 'files'),
             params={'q': query},
             expects=(200, ),
             throws=HTTPError(401)
         )
-        # return res.json()['items']
         return res.json()['files']
