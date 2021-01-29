@@ -9,7 +9,7 @@ from rest_framework import status as http_status
 from mimetypes import MimeTypes
 import os
 import csv
-import StringIO
+# import StringIO
 import logging
 
 from addons.osfstorage.models import Region
@@ -465,7 +465,7 @@ class UserMapView(InstitutionalStorageBaseView, View):
         ext = 'csv'
         name = 'usermap-' + provider_name
 
-        s = StringIO.StringIO()
+        s = iO.StringIO()
         csv_writer = csv.writer(s, delimiter=',')
 
         def fullname(osfuser):

@@ -40,6 +40,7 @@ COPY ./addons/dropbox/requirements.txt ./addons/dropbox/
 COPY ./addons/github/requirements.txt ./addons/github/
 COPY ./addons/gitlab/requirements.txt ./addons/gitlab/
 #COPY ./addons/googledrive/requirements.txt ./addons/googledrive/
+COPY ./addons/googledriveinstitutions/requirements.txt ./addons/googledriveinstitutions/
 #COPY ./addons/iqbrims/requirements.txt ./addons/iqbrims/
 COPY ./addons/mendeley/requirements.txt ./addons/mendeley/
 COPY ./addons/onedrive/requirements.txt /code/addons/onedrive/
@@ -135,6 +136,7 @@ COPY ./addons/forward/static/ ./addons/forward/static/
 COPY ./addons/github/static/ ./addons/github/static/
 COPY ./addons/gitlab/static/ ./addons/gitlab/static/
 COPY ./addons/googledrive/static/ ./addons/googledrive/static/
+COPY ./addons/googledriveinstitutions/static/ ./addons/googledriveinstitutions/static/
 COPY ./addons/mendeley/static/ ./addons/mendeley/static/
 COPY ./addons/onedrive/static/ /code/addons/onedrive/static/
 COPY ./addons/osfstorage/static/ ./addons/osfstorage/static/
@@ -151,6 +153,7 @@ COPY ./addons/s3compat/static/ ./addons/s3compat/static/
 COPY ./addons/nextcloud/static/ ./addons/nextcloud/static/
 COPY ./addons/nextcloudinstitutions/static/ ./addons/nextcloudinstitutions/static/
 COPY ./addons/iqbrims/static/ ./addons/iqbrims/static/
+
 RUN \
     # OSF
     yarn install --frozen-lockfile \
